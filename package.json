@@ -1,0 +1,22 @@
+{
+  "name": "automation-testing",
+  "version": "1.0.0",
+  "description": "End-to-end automation testing framework using Playwright and TypeScript for UI and API testing with hybrid architecture.",
+  "author": "Viktoriia Markus",
+  "license": "ISC",
+  "type": "commonjs",
+
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --project=chromium",
+    "test:api": "playwright test tests/api",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen"
+  },
+
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "dotenv": "^17.4.2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@api/*": ["api/*"],
+      "@fixtures/*": ["fixtures/*"]
+    },
+    "ignoreDeprecations": "6.0",
+    "esModuleInterop": true
+  },
+
+  "include": [
+    "tests",
+    "pages",
+    "utils",
+    "api",
+    "fixtures"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "test-results",
+    "playwright-report"
+  ]
+}
