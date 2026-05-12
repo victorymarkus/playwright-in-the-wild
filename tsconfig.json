@@ -9,7 +9,7 @@
     "paths": {
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
-      "@api/*": ["api/*"],
+      "@api/*": ["tests/api/*"],
       "@fixtures/*": ["fixtures/*"]
     },
     "ignoreDeprecations": "6.0",
@@ -20,7 +20,7 @@
     "tests",
     "pages",
     "utils",
-    "api",
+    "tests/api",
     "fixtures"
   ],
 
