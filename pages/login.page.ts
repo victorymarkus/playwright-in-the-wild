@@ -1,6 +1,6 @@
-import { type Locator, expect, type Page } from "@playwright/test";
+import { type Locator, type Page } from "@playwright/test";
 import { BasePage } from "./base.page";
-import { loginErrorMessage, loginSignUpLink, logoutLink } from "@utils/constants";
+import { loginSignUpLink, logoutLink } from "@utils/constants";
 import { endpoints } from "@utils/endpoints";
 
 
@@ -31,13 +31,5 @@ export class LoginPage extends BasePage {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
-  }
-
-  async verifyLoginSuccess() {
-    await expect(this.logoutButton).toBeVisible();
-  }
-
-  async verifyLoginFailure() {
-    await expect(this.loginForm.getByText(loginErrorMessage)).toBeVisible();
   }
 }

@@ -19,6 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -28,10 +30,29 @@ jobs:
         run: npm ci
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install chromium --with-deps
+
+      - name: Detect changed tests
+        id: changed-tests
+        run: |
+          TESTS=$(git diff --name-only origin/main...HEAD | grep '\.spec\.ts$' || true)
+
+          echo "Changed tests:"
+          echo "$TESTS"
+
+          echo "TESTS<<EOF" >> $GITHUB_ENV
+          echo "$TESTS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: |
+          if [ -z "$TESTS" ]; then
+            echo "No changed tests found"
+          else
+            echo "Running tests:"
+            echo "$TESTS"
+            npx playwright test $TESTS
+          fi
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
