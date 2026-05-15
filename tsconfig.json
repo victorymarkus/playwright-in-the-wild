@@ -10,7 +10,8 @@
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
       "@api/*": ["tests/api/*"],
-      "@fixtures/*": ["fixtures/*"]
+      "@fixtures/*": ["fixtures/*"],
+      "@components/*": ["components/*"],
     },
     "ignoreDeprecations": "6.0",
     "esModuleInterop": true
