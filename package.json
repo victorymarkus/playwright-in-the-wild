@@ -8,6 +8,7 @@
   "scripts": {
     "prepare": "husky",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "format:check": "prettier --check .",
     "test": "playwright test",
     "test:ui": "playwright test --project=chromium",
@@ -24,6 +25,7 @@
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.72.2"
   }
 }
