@@ -2,20 +2,17 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-
-    env:
-      BASE_URL: ${{ secrets.BASE_URL }}
-      API_URL: ${{ secrets.API_URL }}
-      USERNAME: ${{ secrets.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -24,38 +21,26 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 22
+          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
-      - name: Install Playwright Browsers
-        run: npx playwright install chromium --with-deps
-
-      - name: Detect changed tests
-        id: changed-tests
-        run: |
-          TESTS=$(git diff --name-only origin/main...HEAD | grep '\.spec\.ts$' || true)
-
-          echo "Changed tests:"
-          echo "$TESTS"
-
-          echo "TESTS<<EOF" >> $GITHUB_ENV
-          echo "$TESTS" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+      - name: Install Playwright browsers
+        run: npm exec --no -- playwright install chromium --with-deps
 
       - name: Run Playwright tests
-        run: |
-          if [ -z "$TESTS" ]; then
-            echo "No changed tests found"
-          else
-            echo "Running tests:"
-            echo "$TESTS"
-            npx playwright test $TESTS
-          fi
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          API_URL: ${{ secrets.API_URL }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: npm exec --no -- playwright test
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload Playwright report
         if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report/
