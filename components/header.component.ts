@@ -11,6 +11,7 @@ export class HeaderComponent {
   readonly apiTestingLink: Locator;
   readonly videoTutorialsLink: Locator;
   readonly contactUsLink: Locator;
+  readonly logoutLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +24,7 @@ export class HeaderComponent {
     this.apiTestingLink = page.locator('a[href="/api_list"]');
     this.videoTutorialsLink = page.locator('a[href*="youtube.com"]');
     this.contactUsLink = page.locator('a[href="/contact_us"]');
+    this.logoutLink = page.locator('a[href="/logout"]');
   }
 
   async goToHome() {
@@ -43,5 +45,9 @@ export class HeaderComponent {
 
   async goToContactUs() {
     await this.contactUsLink.click();
+  }
+
+  async logout() {
+    await this.logoutLink.click();
   }
 }
