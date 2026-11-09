@@ -11,13 +11,23 @@
       "@utils/*": ["utils/*"],
       "@api/*": ["tests/api/*"],
       "@fixtures/*": ["fixtures/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
     },
     "ignoreDeprecations": "6.0",
     "esModuleInterop": true
   },
 
-  "include": ["tests", "pages", "utils", "tests/api", "fixtures"],
+  "include": [
+    "tests",
+    "pages",
+    "utils",
+    "tests/api",
+    "fixtures"
+  ],
 
-  "exclude": ["node_modules", "test-results", "playwright-report"]
+  "exclude": [
+    "node_modules",
+    "test-results",
+    "playwright-report"
+  ]
 }
