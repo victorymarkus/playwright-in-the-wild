@@ -1,5 +1,5 @@
-import { test as base } from '@playwright/test';
-import { LoginPage } from '@pages/login.page';
+import { test as base } from "@playwright/test";
+import { LoginPage } from "@pages/login.page";
 type Pages = {
   loginPage: LoginPage;
 };
