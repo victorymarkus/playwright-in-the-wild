@@ -5,7 +5,6 @@
   "author": "Viktoriia Markus",
   "license": "ISC",
   "type": "commonjs",
-
   "scripts": {
     "test": "playwright test",
     "test:ui": "playwright test --project=chromium",
@@ -13,9 +12,8 @@
     "report": "playwright show-report",
     "codegen": "playwright codegen"
   },
-
   "devDependencies": {
-    "@playwright/test": "^1.59.1",
+    "@playwright/test": "^1.65.0",
     "@types/node": "^25.6.0",
     "dotenv": "^17.4.2"
   }
