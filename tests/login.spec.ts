@@ -42,4 +42,12 @@ test.describe('Login', () => {
     await expect(loginPage.loginForm.getByText(loginErrorMessage)).toBeVisible();
   })
 
+  test('Logout', {
+    tag: ['@tc-004', '@logout', '@smoke']
+  }, async () => {
+    await loginPage.login();
+    await loginPage.header.logout();
+    await expect(loginPage.loginButton).toBeVisible();
+  });
+
 });
