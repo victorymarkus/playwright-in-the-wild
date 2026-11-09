@@ -1,5 +1,5 @@
-import { type Page } from '@playwright/test';
-import { HeaderComponent } from '@components/header.component';
+import { type Page } from "@playwright/test";
+import { HeaderComponent } from "@components/header.component";
 
 export class BasePage {
   header: HeaderComponent;
@@ -13,15 +13,15 @@ export class BasePage {
   }
 
   async waitForPageLoad() {
-    await this.page.waitForLoadState('load');
+    await this.page.waitForLoadState("load");
   }
 
   async waitForNetworkIdle() {
-    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForLoadState("networkidle");
   }
 
   async waitForDomContentLoaded() {
-    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForLoadState("domcontentloaded");
   }
 
   async reloadPage() {

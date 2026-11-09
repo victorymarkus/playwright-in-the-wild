@@ -1,4 +1,4 @@
-import { type Page, type Locator } from '@playwright/test';
+import { type Page, type Locator } from "@playwright/test";
 
 export class HeaderComponent {
   readonly page: Page;
@@ -15,7 +15,7 @@ export class HeaderComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.logo = this.page.getByAltText('Website for automation practice');
+    this.logo = this.page.getByAltText("Website for automation practice");
     this.homeLink = page.locator('a[href="/"]');
     this.productsLink = page.locator('a[href="/products"]');
     this.cartLink = page.locator('a[href="/view_cart"]');
